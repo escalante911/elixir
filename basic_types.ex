@@ -68,10 +68,28 @@ IO.puts("String.length(\"#{text}\") = #{n}")
 IO.puts("byte_size(\"#{text}\") = #{byte_size(text)}")
 IO.puts("is.binary(#{text}) = #{is_binary(text)}")
 
-list = [1, "hola", 2.3, false]
-tuple = {1, "2", 3.0}
+IO.puts String.upcase(text)
+
+IO.puts("===========================")
 atom = :my_atom
 atom2 = MyAtom
+IO.puts "is_atom(4) = #{is_atom(4)}"
+IO.puts "is_atom(#{atom}) = #{is_atom(atom)}"
+IO.puts "is_boolean(#{atom}) = #{is_boolean(atom)}"
+IO.puts "is_atom(#{atom2}) = #{is_atom(atom2)}"
+IO.puts "is_boolean(#{atom2}) = #{is_boolean(atom2)}"
+
+t = true
+f = false
+IO.puts "is_atom(#{t}) = #{is_atom(t)}"
+IO.puts "is_atom(#{f}) = #{is_atom(f)}"
+IO.puts "(:true == true) = #{:true == true}"
+IO.puts "(:false == false) = #{:false == false}"
+IO.puts "(:true == false) = #{:true == false}"
+
+list = [1, "hola", 2.3, false]
+tuple = {1, "2", 3.0}
+
 
 
 
