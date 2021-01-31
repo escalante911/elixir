@@ -51,7 +51,23 @@ IO.puts("is_integer(#{b}) = #{is_integer(b)}")
 IO.puts("is_number(#{a}) = #{is_number(a)}")
 IO.puts("is_number(#{b}) = #{is_number(b)}")
 
+
+IO.puts("===========================")
 text = "Hello world (#{isOpen})"
+IO.puts(text)
+IO.puts("is.binary(\"#{text}\") = #{is_binary(text)}")
+n = 5
+IO.puts("is.binary(#{n}) = #{is_binary(n)}")
+n = String.length(text)
+IO.puts("String.length(\"#{text}\") = #{n}")
+IO.puts("byte_size(\"#{text}\") = #{byte_size(text)}")
+IO.puts("is.binary(#{n}) = #{is_binary(n)}")
+text = "Pingüino"
+n = String.length(text)
+IO.puts("String.length(\"#{text}\") = #{n}")
+IO.puts("byte_size(\"#{text}\") = #{byte_size(text)}")
+IO.puts("is.binary(#{text}) = #{is_binary(text)}")
+
 list = [1, "hola", 2.3, false]
 tuple = {1, "2", 3.0}
 atom = :my_atom
