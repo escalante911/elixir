@@ -8,6 +8,9 @@ IO.puts("a = #{n}, b = #{n_hex}, c =#{n_octal}")
 q = div(35, 4) # 8
 r = rem(35, 4) # 3
 
+IO.puts("div(35, 4) = #{q}")
+IO.puts("rem(35, 4) = #{r}")
+
 # Float
 x = 2.71
 IO.puts("round(#{x}) = #{round(x)}")
@@ -87,8 +90,50 @@ IO.puts "(:true == true) = #{:true == true}"
 IO.puts "(:false == false) = #{:false == false}"
 IO.puts "(:true == false) = #{:true == false}"
 
+IO.puts("#{:ok}")
+IO.puts("#{:error}")
+
+IO.puts("===========================")
+add = fn(x, y) ->
+  # more lines of code
+  x + y
+end
+
+sub = fn(x, y) -> x - y end
+
+s = add.(1, 2)
+r = sub.(5, 3)
+
+# IO.puts("#{add}") # Throws an error. "add" can not formatted as string
+IO.puts("is_function(add) = #{is_function(add)}")
+IO.puts("is_function(sub) = #{is_function(sub)}")
+IO.puts("add.(1, 2) = #{s}")
+IO.puts("sub.(5, 3) = #{r}")
+
+IO.puts("is_function(add, 0) = #{is_function(add, 0)}")
+IO.puts("is_function(add, 1) = #{is_function(add, 1)}")
+IO.puts("is_function(add, 2) = #{is_function(add, 2)}")
+IO.puts("is_function(add, 3) = #{is_function(add, 3)}")
+
+double = fn x -> add.(x, x) end
+IO.puts("double.(5) = #{double.(5)}")
+
+five = (fn x -> x + 1 end).(4)
+IO.puts("five = #{five}")
+
+
+IO.puts("===========================")
 list = [1, "hola", 2.3, false]
+# IO.puts("list = #{list}") # A list can not be printed
+len = length list # length(list)
+IO.puts("length(list) = #{len}")
+IO.puts("length(list) = #{length list}")
+
+
+
 tuple = {1, "2", 3.0}
+
+
 
 
 
