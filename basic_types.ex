@@ -125,13 +125,24 @@ IO.puts("five = #{five}")
 IO.puts("===========================")
 list = [1, "hola", 2.3, false]
 # IO.puts("list = #{list}") # A list can not be printed
+IO.inspect(list)
 len = length list # length(list)
 IO.puts("length(list) = #{len}")
 IO.puts("length(list) = #{length list}")
 
+list = [1, "hola"] ++ [4, "y", :hello]
+IO.inspect(list)
+IO.puts("length(list) = #{length list}")
 
+IO.puts "hd(list) = #{hd(list)}"
+IO.puts "tl(list) = "
+IO.inspect tl(list)
 
+IO.puts("===========================")
 tuple = {1, "2", 3.0}
+{a, b, c} = tuple
+IO.inspect tuple
+IO.puts("a = #{a}, b = #{b}, c = #{c}")
 
 
 
