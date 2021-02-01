@@ -4,8 +4,8 @@ defmodule MyMapReduce do
   def sum(list) when is_list(list), do: reduce(list, 0, &(&1 + &2))
 
   def map(list, transform) when is_list(list) and is_function(transform, 1) do
-      #mapp(list, [], transform)
-      reduce(list, [, fn h, acc -> acc ++ [transform.(h)] end)
+      mapp(list, [], transform)
+      #reduce(list, [, fn h, acc -> acc ++ [transform.(h)] end)
   end
 
   defp mapp([], acc, _), do: acc
@@ -19,6 +19,3 @@ defmodule MyMapReduce do
   defp reducep([h | t], acc, action), do: reducep(t, action.(h, acc), action)
 
 end
-
-
-
