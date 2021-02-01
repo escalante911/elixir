@@ -1,7 +1,9 @@
 defmodule MyMapReduce do
   #def double(list) when is_list(list), do: doublep(list, [])
-  def double(list) when is_list(list), do: map(list, &(2 * &1))
-  def sum(list) when is_list(list), do: reduce(list, 0, &(&1 + &2))
+  def double(list) when is_list(list), do: map(list, &(3 * &1))
+  def double2(list) when is_list(list), do: map(list, &(9 * &1))
+  def sum(list) when is_list(list), do: reduce(list, 0, &(&2 + &1))
+  def fact(list) when is_list(list), do: reduce(list, 0, &(&1 + &2))
 
   def map(list, transform) when is_list(list) and is_function(transform, 1) do
       mapp(list, [], transform)
