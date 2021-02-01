@@ -8,8 +8,8 @@ end
 
 defp reducep([], _, _, con) when con == 0, do: true
 defp reducep([], _, _, con) when con > 0, do: false
-defp reducep([h | t], acc, action, con), do: reducep(t, action.(h, acc), action, con - 1)
+defp reducep([h | t], acc, action, con), do: reducep(t, action.(acc > h), action, con - 1)
 end
 
 
-IO.puts Evaluacion.validar([5, 4, 7])
+IO.puts Evaluacion.validar([5, 4, 7, 5, 3])
