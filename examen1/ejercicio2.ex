@@ -1,7 +1,7 @@
 defmodule Evaluacion do
  # Pregunta 2
  def sumr(list) when is_list(list) and length(list) > 1, do: reduce(tl(list), hd(list), &(&1 + &2), [hd(list)])
- def sumr(list) when is_list(list) and length(list) <= 1, do: false
+ def sumr(list) when is_list(list) and length(list) <= 1, do: list
 
  def reduce(list, acc, action, lista) when is_list(list) and is_function(action, 2) do
    reducep(list, acc, action, lista)
