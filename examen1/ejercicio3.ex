@@ -6,3 +6,7 @@ defmodule Evaluacion do
  defp validap(_, acc, n, _) when acc < n, do: false
 end
 IO.puts Evaluacion.valida([5, 4])
+IO.puts Evaluacion.valida([5, 4, 3, 2])
+IO.puts Evaluacion.valida([1, 2, 3, 4, 5])
+#IO.puts Evaluacion.valida([])
+IO.puts Evaluacion.valida([1])

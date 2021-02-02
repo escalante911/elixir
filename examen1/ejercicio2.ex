@@ -14,4 +14,5 @@ end
 IO.inspect Evaluacion.sumr([])
 IO.inspect Evaluacion.sumr([1, 3, 4, -1])
 IO.inspect Evaluacion.sumr([1, 3, 4, 2, 5, 6])
+IO.inspect Evaluacion.sumr([2, 6, 1, -3, 8, 9, 5])
 IO.inspect Evaluacion.sumr([1])
