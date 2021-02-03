@@ -43,6 +43,7 @@ result = list |> Enum.map(double) |> Enum.map(triple) |> Enum.filter(filter)
 IO.puts("#{inspect(result)}")
 IO.puts("-------------------")
 
+result = list |> Stream.map(double) |> Strean.map(triple) |> Enum.filter(filter)
 
 # int[] list = {0, 1, ..., 7}
 # int[] sextuplets = {};
@@ -66,3 +67,17 @@ result =
 
   IO.puts("#{inspect(result)}")
   IO.puts("--------------------")
+
+  temporal = list |> stream1 |> stream2 |> enum1 |> stream3 |> enum2 |> stream4
+  result = if my_cond do
+    temporal |> enum3
+  else
+    temporal |> stream5 |> enum4
+  end
+
+  result = 0..7 |> Stream.drop(2) |> Enum.take(3)
+  IO.puts("#{inspect(result)}")
+
+  result = 0..3 |> Stream.drop(2) |> Enum.take(3)
+  IO.puts("#{inspect(result)}")
+  IO.inspect("-------------------------")
