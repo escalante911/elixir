@@ -48,5 +48,21 @@ IO.puts("-------------------")
 # int[] sextuplets = {};
 # int[] result = {};
 # for(int i = 0; i < N; i++){
-#   int x = triple(double)
+#   int x = triple(double(list[i]));
+#   sextuplets.push(x);
 # }
+#  for(int i = 0; i < N; i++) {
+#    int x = sextuplets[i];
+#    if(filter(x)){
+#      result.push(x)
+#    }
+#  }
+result =
+  list
+  |> Stream.map(double)
+  |> Stream.map(triple)
+  |> Stream.filter(filter)
+  |> Enum.map(fn x -> x end)
+
+  IO.puts("#{inspect(result)}")
+  IO.puts("--------------------")
