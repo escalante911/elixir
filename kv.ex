@@ -33,3 +33,28 @@ end
 # In a OOP language
 # kv = KV()
 {:ok, kv} = KV.start_link()
+
+KV.request(kv, :hello)
+value = receive do
+  value -> value
+end
+IO.inspect value
+
+# value = kv.read(:hello)
+# print(value)
+value = KV.read(kv, :hello)
+IO.inspect value
+
+# kv.update(:hello, "World")
+KV.update(kv, :hello, "World")
+
+KV.request(kv, :hello)
+value = receive do
+  value -> value
+end
+IO.puts value
+
+# value = kv.read(:hello)
+# print(value)
+value = KV.read(kv, hello)
+IO.puts value
