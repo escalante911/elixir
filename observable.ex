@@ -16,9 +16,22 @@ defmodule Observable do
           # listen(new_observer, state)
           observer |> remove_observer(observer_pid) |> listen(state)
 
+          {:increment} ->
+            state = state + 1
+            notify(observers, state)
+            listen(observers, state)
 
+          {:decrement} ->
+            state = state - 1
+            notify(observers, state)
+            listen(observers, state)
+
+          {:read, reader_pid} ->
+            send(reader_pid, state)
+            listen(observers, state)
     end
   end
+
 
 
 
