@@ -38,6 +38,5 @@ defmodule Geometry do
     def area(_), do: :error
     def perimeter(_), do: :error
   end
-  end
 
 end
