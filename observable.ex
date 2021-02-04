@@ -59,3 +59,5 @@ defmodule Observable do
     end
   end
 end
+
+# subject = %Observable{pid: subject_pid}
