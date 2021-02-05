@@ -19,4 +19,12 @@ defmodule MyMapReduceTest do
        end
        assert filter([1, 2, 3, 4, 5, 6, 7], &(rem(&1, 2)==1))
      end
+
+     test "observer each element in a list" do
+       import MyMapReduce, only: [create: 2]
+       assert_raise FunctionClauseError, fn ->
+            filter(1, 1)
+       end
+     end
+
 end
