@@ -61,5 +61,11 @@ defmodule Sigil do
     %DateTime{minute: m, time_zone: tz, utc_offset: uo, std_offset:so} = dt
     IO.puts(m)
     IO.puts(tz)
+    IO.puts(uo)
+    IO.puts(so)
   end
+  def sigil_i(string, []), do: String.to_integer(string)
+  def sigil_i(string, [?n]), do: String.to_integer(string)
+  def sigil_i(string, [?a]), do: string |> String.to_integer() |> abs()
+
 end
