@@ -5,7 +5,7 @@ def project do
   [
     app: :first_project,
     version: "0.1.0"
-    elixir: ""
+    elixir: "1.11"
   ]
 end
 end
