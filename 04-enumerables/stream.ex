@@ -1,10 +1,10 @@
 double = fn x -> 2 * x end
 triple = fn x -> 3 * x end
 filter = fn n -> rem(n, 4) == 0 end
-is_mod3_plus_1 = fn n -> rem(n, 3) == 1 end
-is_mod3_plus_1 = fn n -> rem(n, 3) == 2 end
+#is_mod3_plus_1 = fn n -> rem(n, 3) == 1 end
+#is_mod3_plus_1 = fn n -> rem(n, 3) == 2 end
 
-list = 0..7
+list = 0..7#
 
 # a |> proc(fun)
 # proc(a, fun)
@@ -43,7 +43,7 @@ result = list |> Enum.map(double) |> Enum.map(triple) |> Enum.filter(filter)
 IO.puts("#{inspect(result)}")
 IO.puts("-------------------")
 
-result = list |> Stream.map(double) |> Strean.map(triple) |> Enum.filter(filter)
+#result = list |> Stream.map(double) |> Strean.map(triple) |> Enum.filter(filter)
 
 # int[] list = {0, 1, ..., 7}
 # int[] sextuplets = {};
@@ -68,12 +68,17 @@ result =
   IO.puts("#{inspect(result)}")
   IO.puts("--------------------")
 
-  temporal = list |> stream1 |> stream2 |> enum1 |> stream3 |> enum2 |> stream4
-  result = if my_cond do
-    temporal |> enum3
-  else
-    temporal |> stream5 |> enum4
-  end
+  result = list |> Stream.map(double) |> Stream.map(triple) |> Enum.filter(filter)
+  IO.puts("#{inspect(result)}")
+  IO.puts("--------------------")
+
+
+  #temporal = list |> stream1 |> stream2 |> enum1 |> stream3 |> enum2 |> stream4
+  #result = if my_cond do
+  #  temporal |> enum3
+  #else
+  #  temporal |> stream5 |> enum4
+  #end
 
   result = 0..7 |> Stream.drop(2) |> Enum.take(3)
   IO.puts("#{inspect(result)}")
