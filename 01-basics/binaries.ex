@@ -10,9 +10,9 @@ IO.puts "\u0061" == "a" # true
 IO.puts "\u0061" === "a" # true
 
 ##################################
-string = "Pingüino"
-IO.puts String.lenght(string) # 8
-IO.puts byte_size(string) # 9
+#string = "Pingüino"
+#IO.puts String.length(string) # 8
+#IO.puts byte_size(string) # 9
 
 ###################################
 #7 6 5 4 3 2 1 0
@@ -58,25 +58,26 @@ IO.puts middle # 66
 IO.puts tall # "CDE"
 
 ############################################
-Io.inspect is_binary(<<219, 197, 19>>) # true
+IO.inspect is_binary(<<219, 197, 19>>) # true
 IO.inspect String.valid?(<<219, 197, 19>>) # false
 IO.inspect String.valid?(<<127>>) # true
 IO.inspect String.valid?(<<128>>) # false
 
 <<head, rest::binary>> = "Microsoft"
 IO.puts head == ?M # true
-IO.puts head # true
+IO.puts head # 77
 IO.puts rest # "icrosoft"
 
-<<head, rest::binary>> = "Über"
-IO.puts head == ?M # true
-IO.puts head # true
-IO.puts rest # "ber"
+#<<head, rest::binary>> = "Über"
+#IO.puts head == ?Ü # true
+#IO.puts head # 77
+#IO.puts rest # "ber"
+
+IO.inspect 'Hola', charlists: :as_lists
 
 
-
-#Enum.map([1,2,3,4,5], &(3 * & 1 + 1))
-#Enum.reduce([1, 3, 4, -1])
-#list = [1,2,3,4,5]
-#triple_plus_one = Enum.map(list, &(3 * &1 + 1))
-#Enum.filter(triple_plus_one, &(rem (&1, 2 == 0)))
+IO.inspect Enum.map([1,2,3,4,5], &(3 * &1 + 1))
+IO.inspect Enum.reduce([1, 3, 4, -1], 0, fn act, acc -> act + acc end)
+IO.inspect list = [1,2,3,4,5]
+IO.inspect triple_plus_one = Enum.map(list, &(3 * &1 + 1))
+IO.inspect Enum.filter(triple_plus_one, &(rem(&1, 2) == 0))
