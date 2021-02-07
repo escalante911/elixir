@@ -1,7 +1,7 @@
 double = fn x -> 2 * x end
 triple = fn x -> 3 * x end
 filter = fn n -> rem(n, 4) == 0 end
-#is_mod3_plus_1 = fn n -> rem(n, 3) == 1 end
+is_mod3_plus_1 = fn n -> rem(n, 3) == 1 end
 #is_mod3_plus_1 = fn n -> rem(n, 3) == 2 end
 
 list = 0..7#
@@ -86,3 +86,11 @@ result =
   result = 0..3 |> Stream.drop(2) |> Enum.take(3)
   IO.puts("#{inspect(result)}")
   IO.inspect("-------------------------")
+
+  result = 0..7 |> Stream.map(double) |> Stream.filter(is_mod3_plus_1) |> Enum.map(fn x -> x end)
+  IO.puts("#{inspect(result)}")
+
+  IO.inspect("-------------------------")
+
+  result = 0..7 |> Stream.filter(is_mod3_plus_1) |> Stream.map(double) |> Enum.map(fn x -> x end)
+  IO.puts("#{inspect(result)}")
