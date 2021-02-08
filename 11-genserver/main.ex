@@ -2,6 +2,8 @@
 
 Balance.deposit(balance, 100) |> IO.inspect()
 Balance.withdraw(balance, 30) |> IO.inspect()
+Balance.tranfer(balance, 80) |> IO.inspect()
+Balance.read(balance) |> IO.inspect()
 
 IO.puts("------------------------")
 
