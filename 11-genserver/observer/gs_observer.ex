@@ -15,11 +15,25 @@ defmodule GsObservable do
   def detach(subject), do: GenServer.call(subject, {:detach, self()})
   def increment(subject), do: GenServer.call(subject, {:increment})
   def decrement(subject), do: GenServer.call(subject, {:decrement})
+  def read(subject), do: GenServer.call(subject, {:read, self()})
 
 
 
-  def handle_call({})
+  def handle_call({:increment, state}) do
+    state = state + 1
+    notify(observers, state)
+    listen(observers, state)
+  end
 
-  def handle_cast
+  def handle_call({:decrement, state}) do
+    state = state - 1
+    notify(observers, state)
+    listen(observers, state)
+  end
+
+  def handle_cast({:read, reader_pid}) do
+    send(reader_pid, state)
+    listen(observers, state)
+  end
 
 end

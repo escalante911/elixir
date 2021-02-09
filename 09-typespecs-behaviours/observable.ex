@@ -1,7 +1,7 @@
 defmodule Observable do
   @spec create(integer()) :: pid()
   def create(initialState \\ 0) do
-    spawn(_MODULE_, :listen, [[], initialState])
+    spawn(__MODULE__, :listen, [[], initialState])
   end
 
   defp listen(observers, state) do
@@ -9,12 +9,12 @@ defmodule Observable do
       {:attach, observer_pid} ->
         # new_observer = add_observer(observer, observer_pid)
         # listen(new_observer, state)
-        observer |> add_observer(observer_pid) |> listen(state)
+        observers |> add_observer(observer_pid) |> listen(state)
 
         {:detach, observer_pid} ->
           # new_observer = remove_observer(observer, observer_pid)
           # listen(new_observer, state)
-          observer |> remove_observer(observer_pid) |> listen(state)
+          observers |> remove_observer(observer_pid) |> listen(state)
 
           {:increment} ->
             state = state + 1
@@ -51,7 +51,7 @@ defmodule Observable do
     await()
   end
 
-  def await(millis \\ 1000) do
+  def await(millins \\ 1000) do
     receive do
       count -> count
     after
