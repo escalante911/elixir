@@ -1,11 +1,11 @@
 defmodule GsObserver do
   use GenServer
+  @enforce_keys :value
+  defstruct [:value, observers: []]
 
-  def create(initial_state \\ 0) do
-    cond do
-      initial_state < 0 -> {:error, "valor negativo"}
-      true -> GenServer.start_link(__MODULE__, initial_state)
-    end
+  def create(initial_value \\ 0) do
+    state = %GsObserver{value: inicial_value}
+    GenServer.start_link(__MODULE__, state)
   end
 
   def init(state), do: {:ok, state}
@@ -19,35 +19,35 @@ defmodule GsObserver do
   def increment(subject, amount), do: GenServer.cast(subject, {:increment, amount})
   def decrement(subject, amount), do: GenServer.cast(subject, {:decrement, amount})
 
-  def handle_cast({:attach, observer_pid}, {observers, value}) do
+  def handle_call(:attach, {observer_pid, _}, {observers, value}) do
     observers = observers |> add_observer(observer_pid)
     {:noreply, {observers, value}}
   end
 
-  def handle_cast({:detach, observer_pid}, {observers, value}) do
+  def handle_call(:detach, {observer_pid, _}, {observers, value}) do
     observers = observers |> remove_observer(observer_pid)
     {:noreply, {observers, value}}
   end
 
-  def handle_cast({:increment, amount}, {observers, value}) do
-    value = value + amount
-    notify(observers, {:increment, amount})
-    {:noreply, {observers, value}}
+  def handle_cast(:increment, {observers, value}) do
+    value = value + 1
+    result = observers |> notify(value)
+    {:noreply, result}
   end
 
-  def handle_cast({:decrement, amount}, {observers, value}) do
-    value = value - amount
-    notify(observers, {:increment, amount})
-    {:noreply, {observers, value}}
+  def handle_cast(:decrement, {observers, value}) do
+    value = value - 1
+    result = observers |> notify(value)
+    {:noreply, result}
   end
 
   def handle_call(:read, _from_id, {observers, value}) do
     {:reply, value, {observers, value}}
   end
 
-  def notify(observers, value) do
-    observers |> Enum.each(&send(&1, value))
-    {observers, value}
+  def notify(observers, amount) do
+    observers |> Enum.each(&send(&1, amount))
+    {observers, amount}
   end
 
 end
