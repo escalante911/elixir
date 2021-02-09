@@ -14,7 +14,7 @@ defmodule GsObsTest do
       assert Obs.read(subject) == 1
      end
 
-     test "Continue" do
+     test "atach" do
       {:ok, subject} = Obs.create()
       Obs.increment(subject)
       assert Obs.await() == "There was not answer"

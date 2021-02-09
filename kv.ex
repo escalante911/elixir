@@ -56,5 +56,5 @@ IO.puts value
 
 # value = kv.read(:hello)
 # print(value)
-value = KV.read(kv, hello)
+value = KV.read(kv, :hello)
 IO.puts value
