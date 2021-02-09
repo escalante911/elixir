@@ -18,6 +18,15 @@ defmodule GsObservable do
   def read(subject), do: GenServer.call(subject, {:read, self()})
 
 
+  def add_observer(observers, observer_pid), do: [observer_pid | observers]
+  def remove_observer(observers, observer_pid), do: observers -- [observer_pid]
+
+  defp notify(observers, state) do
+    # Enum.each(observers, fn(obs_id) -> send(obs_pid, state) end)
+    # observers |> Enum.each(fn(obs_id) -> send(obs_pid, state) end)
+    observers |> Enum.each(&send(&1, state))
+  end
+
 
   def handle_call({:increment, state}) do
     state = state + 1
