@@ -57,18 +57,3 @@ defmodule Obs do
     end
   end
 end
-
-{:ok, subject} = Obs.create()
-Obs.read(subject) |> IO.puts()
-Obs.attach(subject)
-Obs.read(subject) |> IO.puts()
-Obs.increment(subject)
-Obs.await() |> IO.puts()
-Obs.increment(subject)
-Obs.await() |> IO.puts()
-Obs.decrement(subject)
-Obs.await() |> IO.puts()
-Obs.detach(subject)
-Obs.increment(subject)
-Obs.await() |> IO.puts()
-IO.puts("The Counter is")
