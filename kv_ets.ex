@@ -1,26 +1,32 @@
 defmodule KvEts do
-  use ETS.Utils
-
-  @initial_state {:hello, "world"}
 
   def star_link do
-    table = :ets.new(:example, [:set, :protected])
-    :ets.inspect(table, @initial_state)
-    table
+    :ets.new(:my_bucket, [:set, :protected])
   end
 
   def read(ref, key) do
-     [{_, value}] = :ets.lookup(ref, key)
+     case :ets.lookup(ref, key) do
+       [] -> nil
+       [{_, value}] -> value
+     end
   end
 
-  def insert(rq, key, value) do
-    :ets.insert(rq, {key, value})
+  def insert(ref, key, value) do
+    :ets.insert(ref, {key, value})
     ref
   end
 
-  def actualizar(ref, key, value) do
+  def update(ref, key, value) do
     :ets.insert(ref, {key, value})
   end
 end
 
-ets = kv_ets.star_link()
+ets = KvEts.star_link()
+
+KvEts.insert(ets, :name, "Jose")
+KvEts.insert(ets, :lastname, "Escalante")
+
+name = KvEts.read(ets, :name)
+lastname = KvEts.read(ets, :lastname)
+
+IO.puts("#{name} #{lastname}")
