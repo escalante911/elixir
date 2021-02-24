@@ -10,4 +10,9 @@ defmodule Test do
   end
 end
 
+def handle_call(er) do
+  raise ":error"
+end
+
 Test.start()
+Test.handle_call()
