@@ -10,7 +10,7 @@ defmodule KVServer.Application do
     port = String.to_integer(System.get_env("PORT") || "8000")
     children = [
       {Task.Supervisor, name: KVServer.TaskSupervisor},
-      {Task, fn -> KVServer.accept(port) end}
+      {Task, fn -> Obs.Server.accept(port) end}
       # Starts a worker by calling: KVServer.Worker.start_link(arg)
       # {KVServer.Worker, arg}
     ]
