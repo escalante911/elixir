@@ -1,4 +1,5 @@
 defmodule KVServer.Command do
+
   def run(_command) do
     {:ok, "OK\r\n"}
   end

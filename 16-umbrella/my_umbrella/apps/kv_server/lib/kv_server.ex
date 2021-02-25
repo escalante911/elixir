@@ -31,3 +31,5 @@ defmodule KVServer do
     :gen_tcp.send(socket, "Respuesta: #{line}")
   end
 end
+
+#  telnet 127.0.0.1 8000
