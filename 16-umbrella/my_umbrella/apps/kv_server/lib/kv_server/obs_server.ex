@@ -37,6 +37,6 @@ defmodule Obs.Server do
     :gen_tcp.send(socket, "ERROR\r\n")
     exit(err)
   end
-  defp write_line({:ok, line}, socket), do: :gen_tcp.send(socket, "Respuesta: #{line}")
+  defp write_line({:ok, line}, socket), do: :gen_tcp.send(socket, "Answer: #{line}")
 
 end

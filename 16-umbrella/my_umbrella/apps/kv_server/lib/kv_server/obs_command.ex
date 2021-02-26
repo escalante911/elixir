@@ -12,12 +12,19 @@ defmodule Obs.Command do
   end
 
   def parse(msg) do
+    val = String.split(msg, " ") |> Enum.at(1)
+    value = cond do
+      val != nil -> String.replace(val, "\r\n", "")
+      true -> nil
+    end
     case String.split(msg, " ") do
       ["read\r\n"] -> {:ok, {:read, ""}}
-      ["increment", val] -> {:ok, {:increment, String.to_integer val}}
-      ["decrement", val] -> {:ok, {:decrement, String.to_integer val}}
+      ["increment", _] -> {:ok, {:increment, String.to_integer value}}
+      ["decrement", _] -> {:ok, {:decrement, String.to_integer value}}
       _ ->
         {:error, :unknown_command}
     end
   end
 end
+
+#  telnet 127.0.0.1 8000
