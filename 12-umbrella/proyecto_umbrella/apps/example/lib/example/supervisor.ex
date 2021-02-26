@@ -9,7 +9,7 @@ defmodule Example.Supervisor do
     children = [
       # Obs
       # {Obs, name: Obs}
-      {Obs, name: :obs}
+      {Counter, name: Counter}
     ]
     Supervisor.init(children, strategy: :one_for_one)
   end

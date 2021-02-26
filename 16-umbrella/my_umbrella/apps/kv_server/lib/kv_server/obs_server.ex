@@ -2,7 +2,7 @@ defmodule Obs.Server do
   require Logger
 
   def accept(port) do
-    Obs.create()
+    Counter.create()
     {:ok, socket} = :gen_tcp.listen(port, [:binary, packet: :line, active: false, reuseaddr: true])
     Logger.info("Aceptando conexiones en el puerto #{port}")
     loop_acceptor(socket)

@@ -4,9 +4,9 @@ defmodule Obs.Command do
   def run(command) do
 
     case command do
-       {:read, _} -> {:ok, "Value: #{Obs.read(Obs)}\r\n"}
-       {:increment, parametro} -> {:ok, "#{Obs.increment(Obs, parametro)}\r\n"}
-       {:decrement, parametro} -> {:ok, "#{Obs.decrement(Obs, parametro)}\r\n"}
+       {:read, _} -> {:ok, "Value: #{Counter.read(Counter)}\r\n"}
+       {:increment, parametro} -> {:ok, "#{Counter.increment(Counter, parametro)}\r\n"}
+       {:decrement, parametro} -> {:ok, "#{Counter.decrement(Counter, parametro)}\r\n"}
        _ -> {:error, "UNKNOWN COMMAND #{inspect command}\r\n"}
     end
   end
