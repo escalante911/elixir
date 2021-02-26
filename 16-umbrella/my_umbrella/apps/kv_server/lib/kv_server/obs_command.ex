@@ -7,7 +7,7 @@ defmodule Obs.Command do
        {:read, _} -> {:ok, "Value: #{Obs.read(Obs)}\r\n"}
        {:increment, parametro} -> {:ok, "#{Obs.increment(Obs, parametro)}\r\n"}
        {:decrement, parametro} -> {:ok, "#{Obs.decrement(Obs, parametro)}\r\n"}
-       _ -> {:error, "#{command}"}
+       _ -> {:error, "UNKNOWN COMMAND #{inspect command}\r\n"}
     end
   end
 
