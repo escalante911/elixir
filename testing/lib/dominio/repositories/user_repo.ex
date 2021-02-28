@@ -5,7 +5,7 @@ end
 
 defmodule UserRepoImpl do
   def start_link(db_handler) do
-    GenServer.start_link(__MODULE__, {db_handler})
+    GenServer.start_link(__MODULE__, db_handler)
   end
 
   @impl true
@@ -22,7 +22,7 @@ defmodule UserRepoImpl do
   end
 end
 
-def UserRepo, for: UserRepoImpl do
+defimpl UserRepo, for: UserRepoImpl do
   def createOne(repo, keywords) do
     GenServer.call(repo, {:create_one, keywords})
   end

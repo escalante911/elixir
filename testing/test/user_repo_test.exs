@@ -2,30 +2,32 @@ defmodule UserRepoTest do
   use ExUnit.Case
   doctest UserRepo
 
-  test "creating users" do
+  test "create users" do
+    db_handler = PostgresMock.init(0)
     db_handler = PostgresMock.create()
-
     expected = %User{id: 1, name: "Frank"}
     new_user = UserRepo.createOne(db_handler, name: "Frank")
     assert expected == new_user
 
-    expected = %User{id: 2, name: "Duban"}
-    new_user = UserRepo.createOne(db_handler, name: "Duban")
+    expected = %User{id: 2, name: "Jose"}
+    new_user = UserRepo.createOne(db_handler, name: "Jose")
     assert expected == new_user
 
-    expected = %User{id: 3, name: "Ricardo"}
-    new_user = UserRepo.createOne(db_handler, name: "Ricardo")
+    expected = %User{id: 3, name: "Luis"}
+    new_user = UserRepo.createOne(db_handler, name: "Luis")
     assert expected == new_user
   end
 
-  test "finding users out of range" do
+  test "users out of range" do
     db_handler = PostgresMock.create()
 
     UserRepo.createOne(db_handler, name: "Frank")
-    UserRepo.createOne(db_handler, name: "Duban")
+    UserRepo.createOne(db_handler, name: "Jose")
 
     assert UserRepo.findOne(db_handler, -1) == nil
     assert UserRepo.findOne(db_handler, 0) == nil
+    assert UserRepo.findOne(db_handler, 1) == %User{id: 1, name: "Frank"}
+    assert UserRepo.findOne(db_handler, 2) == %User{id: 2, name: "Jose"}
     assert UserRepo.findOne(db_handler, 3) == nil
     assert UserRepo.findOne(db_handler, 4) == nil
   end
@@ -34,9 +36,9 @@ defmodule UserRepoTest do
     db_handler = PostgresMock.create()
 
     UserRepo.createOne(db_handler, name: "Frank")
-    UserRepo.createOne(db_handler, name: "Duban")
+    UserRepo.createOne(db_handler, name: "Jose")
 
     assert UserRepo.findOne(db_handler, 1) == %User{id: 1, name: "Frank"}
-    assert UserRepo.findOne(db_handler, 2) == %User{id: 2, name: "Duban"}
+    assert UserRepo.findOne(db_handler, 2) == %User{id: 2, name: "Jose"}
   end
 end
