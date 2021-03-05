@@ -1,0 +1,29 @@
+## YAML Template.
+---
+version: "3.7"
+services:
+  phoenix:
+    image: phoenix_prueba
+    environment: 
+      PGUSER: postgres
+      PGPASSWORD: 1234
+      PGDATABASE: phoenix_prueba_dev
+      PGPORT: 5432
+      PGHOST: db
+    ports:
+      - 4000:4000
+    depends_on: 
+      - db
+  db:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+     # PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+   # volumes:
+   #   - pgdata:/var/lib/postgresql/data
+volumes:
+  phoenix_prueba-data:
